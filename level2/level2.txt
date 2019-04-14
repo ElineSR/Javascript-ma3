@@ -3,19 +3,202 @@ JavaScript MA03
 Level 2
 
 1. In your own words, describe what JavaScript Code Style is.
-
+	
+	Javascript code style is how you as a programmer visually write your code. Is it consistent in how you place 
+	your elements? Is it easy to read and understand? Do you cram it all into one line or space it out to see 
+	the different parts of the code? It is important with a good style so that it is easy to update or look through 
+	to find errors. Someone else will at one point need to take care of your code so it would be good manners to make 
+	that as stress free as possible by being consistent and having clear comments in your code. Style can often reflect
+	where you learned to code, and from what I have seen online so far, placement of curly braces is a sensitive topic.
+	The whole point of style is to make the code easy to read like you would style text in a magazine or webpage for 
+	easy reading.
+	
 2. What is a Regular Expression?
+	Regular expressions detect patterns in strings using methods. Regular expressions can also be called regExp.
+	
+	Methods used are:	regexp.exec 	(Used to detect characters in a string)
+						regexp.test 	(Tests if there is a match in the string. Returns true or false)
+						string.match
+						string.matchAll	(Searches the string for match against a regexp, and returns the matches 
+										as an array. Needs a g modifier to make it a global search. Otherwise 
+										it just returns the first match.)
+						string.replace	(Searches a string for a specified value, or a regExp, and 
+										returns a new string with the specified replacements.)
+						string.search	(Searches the string and for the specified value and returns the 
+										position of the match. Search value can be string or regExp. 
+										Returns -1 if no match.)
+						string.split	(Splits a string into an array of substrings, and returns the new array. 
+										If an empty string is used as an separator " ", the string is split 
+										between each character. Does not change the original string.)
+	
+	These codes can be used to detect patterns like e-mail addresses. Very often they are used to validate
+	input from users so that the input is inputed correctly.  They are objects and are set up by using 
+	forward slash infront and after the part of the strings you want to the code to recognize as a 
+	regular expression. 
+	
+	
+	
+	RegExp can be hard to read and debug as they do not allow whitespace and comments. This causes concern
+	when it is used in security applications. Still widely used though.
+	
+	RegExp has six optional flags that can be added to the end of the regExp literal.
+		
+		g  = Global (meaning that it can match several times; and the meaning of this varies with the method)
+		i  = Insensitive (Ignore character case)
+		m  = Multiline (^ and $ can match line-ending characters)
+		s  = allows . to match newline characters
+		u  = unicode (treat a pattern as a sequence of unicode points)
+		y  = perform a sticky search that matches starting at the current position in the target string.
+		
+	RegExp objects contain these properties
+		
+		global  	= true if the g flag was used.
+		ignoreCase  = true if the i flag was used.
+		lastIndex	= the index at which to start the next exec match. Initially it is zero.
+		multiline	= true if the m flag was used.  	
+		source		= the source text of the regular expression.
+		
+	RegExp methods
+	
+		exec()  	= Executes a search for a match in its string parameter.
+		test()		= Tests for a match in its string parameter.
+		toSource()	= Returns an object literal representing the specified object; you can use this value to create a new object.
+		toString()	= Returns a string representing the specified object.
+		
+				
+	There are four kinds of regExp groups. Capturing, noncapturing (?: prefix), positive lookahead (?= prefix), negative lookahead(?! prefix)
+	There are regExp classes. Like separating out vowel matches, so it is more convenient.
+	
+
+
 
 3. What does the .random() method do?
+	
+	This math method returns a pseudo-random floating number between 0 and 1, but not inclusive 1. 
+	That means for example numbers between 0.0000000000000001 - 0.9999999999999999. It should not 
+	be used with anything related to security as it does not provide cryptographically secure 
+	numbers. In browser compatibility it has full support.
+	
+	In a function:
+		
+		function getRandom() {
+ 		 return Math.random();
+		}
+	
 
 4. What does the .sort() method do?
+	
+	.sort() is an array method. When used with an array it returns a new array that has sorted the contained
+	elements lexicographically. In an array of different things like fruits it would sort them alphabetically. 
+	Otherwise it needs a compareFunction to define the sort order. This can sort the array in a ascending 
+	order or descending order. Return the highest or lowest value first. You can add the math.random method
+	to make the order random.It has good support.
+
 
 5. What does the .reverse() method do?
+	
+	.reverse is also an array method. It takes the elements of the array and reverses the order of the array.
+	It returns an array showing the reversed version of the original array. It has good support. 
+
 
 6. List two examples of bad JavaScript code.
-
+	
+	Use of Equal signs
+	Using ==  instead of ===. == compares only the value while === compares value and data type. 
+		
+		if (100 == "100"){
+			console.log("true")
+		}
+		else{
+			console.log("false")
+		}
+		
+		Result: true
+		
+		if (100 === "100"){
+			console.log("true")
+		}
+		else{
+			console.log("false")
+		}
+		
+		Result: false
+		
+	Block-less statements
+	If, while, do and for statements can be written as a block or a single statment. You can simply skip 
+	the curly-brackets. This may cause the program structure to be obscured and hard to read, correctly 
+	improve upon or debug.   
+		
+		bad:
+		if (ok)
+			t= true;
+			advance();
+			
+		better:
+		if (ok){
+			t=true
+		}
+		advance();	
+		
+			
+		
+	
 7. What data types can a JSON object contain?
+	
+	JSON can contain 6 types of data:
+	- Objects
+	- Arrays
+	- Strings
+	- Numbers
+	- Booleans
+	- Null
 
 8. What is minifying JavaScript Code?
+	
+	Minifying is removing all unnecessary characters from the source code without changing the functionality.
+	It should make the download quicker for the users. Reduce bandwith the website. Reduce the number of HTTP 
+	request from the server. Comments and whitespace gets removed as they are not necessary to execute javascript.  
+	There seems to be several services online to help with this process. Beautify is the oposite and uncompresses
+	the minified code to make it easy to view, read and edit.
 
 9. What is a global variable?
+	
+	A global variable is visible in all of the scope. They can be convenient in smaller programs, but can quickly
+	become problematic in a larger program. A global variable can be changed at anytime and will then effect 
+	everything it has been used in. It degrades the reliability of the programs that use them.
+	Independent subprograms might end up interfering with each other if they have global variables that 
+	share the same name. Global variables can be defined in three ways. Declaring one outside of a function using var.
+	Add a property directly to a global object or implying a global variable by declaring one without var 
+	infront outside a function. It was intended to make it easier to make a variable, but it backfired.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
