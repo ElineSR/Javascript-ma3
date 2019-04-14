@@ -8,8 +8,13 @@
 <body>
 
 <!--Contact Form-->
-
-
+<form name="myForm" onsubmit="return validateForm()" onsubmit="return validatePhone()" onsubmit="return validatelastName()" onsubmit="return validateEmail()" >
+<p>Name: <input type="text" name="name"/></p>
+<p>Last name: <input type="text" name="last_name" /></p>
+<p>Telephone number: <input id="numb" type="text" name="telephone_number"/></p>
+<p>email: <input type="text" name="email"/></p>
+<input type="submit" value="enter"/></p>
+</form>
 <script src="script.js"></script>
 </body>
 </html>
